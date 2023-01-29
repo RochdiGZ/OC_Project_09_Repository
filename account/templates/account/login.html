@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+    <!-- <article id="form-container">
+        <header class="form-header">
+            <h2 class="form-title">Connexion</h2>
+        </header>
+    </article> -->
+
+    <p>{{ message }}</p>
+    <form method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button type="submit">Se connecter</button>
+    </form>
+
+{% endblock content %}
