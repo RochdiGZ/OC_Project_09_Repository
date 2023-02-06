@@ -1,0 +1,24 @@
+% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <article id="form-container">
+        <form method="post">
+            <header>
+                <h2 class="form-title">Inscrivez-vous</h2>
+            </header>
+            <main>
+                <div class="form-input">
+                    <input type="password" placeholder="Mot de passe" name="password1" required>
+                </div>
+                <div class="form-input">
+                    <input type="password" placeholder="Confirmer mot de passe" name="password2" required>
+                </div>
+                <div>
+                    <a class="form-link" href="{% url 'signup' %}">S'inscrire</a>
+                </div>
+                {% csrf_token %}
+                <button class="form-button" type="submit">S'inscrire</button>
+            </main>
+        </form>
+</article>
+{% endblock content %}

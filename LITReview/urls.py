@@ -27,6 +27,7 @@ urlpatterns = [
         template_name="account/login.html",
         redirect_authenticated_user=True),
          name="login"),
+
     path("logout/", account.views.logout_user, name="logout"),
     path("home/", flux.views.home, name="home"),
 ]

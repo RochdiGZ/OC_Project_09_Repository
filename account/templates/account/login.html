@@ -1,16 +1,23 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
-    <!-- <article id="form-container">
-        <header class="form-header">
-            <h2 class="form-title">Connexion</h2>
-        </header>
-    </article> -->
-
-    <p>{{ message }}</p>
-    <form method="post">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <button type="submit">Se connecter</button>
-    </form>
-
+    <article id="form-container">
+        <form method="post">
+            <header>
+                <h2 class="form-title">Inscrivez-vous maintenant</h2>
+            </header>
+            <main>
+                <div class="form-input">
+                    <input placeholder="Nom d'utilisateur" name="username" value="" />
+                </div>
+                <br />
+                <div class="form-input">
+                    <input type="password" placeholder="Mot de passe" name="password" value="" />
+                </div>
+                <br />
+                {% csrf_token %}
+                <button class="form-button" type="submit">Se connecter</button>
+            </main>
+        </form>
+    </article>
 {% endblock content %}

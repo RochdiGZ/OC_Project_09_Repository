@@ -12,10 +12,9 @@
     <link rel="stylesheet" href="{% static 'LITReview/base.css' %}">
 </head>
 <body>
-    <h1>Connexion</h1>
+    <h2>LITReview</h2>
+    <hr>
     {% block content %}{% endblock content %}
-    {% if user.is_authenticated %}
-        <p>Vous êtes connecté en tant que {{ request.user }}. <a href="{% url 'logout' %}">Se déconnecter</a></p>
-    {% endif %}
+
 </body>
 </html>
