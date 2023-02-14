@@ -37,9 +37,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # Add the account application
-    "account",
+    # Add the accounts application
+    "accounts",
     "flux",
+    "posts",
+    "reviews",
+    "subscriptions",
+    "tickets",
 ]
 
 MIDDLEWARE = [
@@ -130,7 +134,7 @@ STATICFILES_DIRS = [BASE_DIR / "static", ]
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Add the user model
-AUTH_USER_MODEL = "account.User"
+AUTH_USER_MODEL = "accounts.CustomUser"
 
 LOGIN_URL = "login"
 

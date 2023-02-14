@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.contrib.auth.views import LoginView
-import account.views
+import accounts.views
 import flux.views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -24,12 +24,12 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", LoginView.as_view(
-        template_name="account/login.html",
+        template_name="accounts/login.html",
         redirect_authenticated_user=True),
          name="login"),
-
-    path("logout/", account.views.logout_user, name="logout"),
+    path("logout/", accounts.views.logout_user, name="logout"),
     path("home/", flux.views.home, name="home"),
+    path("signup/", accounts.views.signup, name="signup"),
 ]
 
 if settings.DEBUG:

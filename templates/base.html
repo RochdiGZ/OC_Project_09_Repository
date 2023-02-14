@@ -7,14 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="LITReview est une application web permettant de
                 demander ou publier des critiques de livres ou d'articles.">
-    <title>LITReview</title>
-    <link rel="icon" href="{% static 'LITReview/media/logo.ico' %}">
-    <link rel="stylesheet" href="{% static 'LITReview/css/base.css' %}">
+    <title>{% block title %}LITReview{% endblock %}</title>
+    <link rel="icon" href="{% static 'media/logo.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 <body>
-    <h2 class="page-title">LITReview</h2>
-    <hr>
-    {% block content %}{% endblock content %}
+
+    {% block content %}{% endblock %}
 
 </body>
 </html>
