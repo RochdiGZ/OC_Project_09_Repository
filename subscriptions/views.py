@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def subscribers(request):
+    return render(request, "subscriptions/subscribers.html")

@@ -3,10 +3,16 @@
 }
 .page-title {
     color: green;
+    text-align: center;
 }
 .form-title {
     color: white;
+    text-align: center;
 }
-.form-input {
-    color: white;
+ul {
+    list-style: none;
+}
+li {
+    display: inline-block;
+    padding: 10px 20px;
 }

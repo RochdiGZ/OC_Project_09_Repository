@@ -4,4 +4,16 @@
 
 {% block content %}
     <p>Vous êtes connecté !</p>
+    <hr>
+    <ul>
+        <li>LITReview</li>
+        <li><a href="{% url 'home' %}">Flux</a></li>
+        <li><a href="{% url 'subscribers' %}">Abonnemnets</a></li>
+        <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
+    </ul>
+    <hr>
+    <br>
+    <button class="form-button"><a href="{% url 'create-ticket' %}">Demander une critique</a></button>
+    <button class="form-button"><a href="{% url 'create-review' %}">Créer une critique</a></button>
+    <br>
 {% endblock %}

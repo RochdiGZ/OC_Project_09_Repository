@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}Création d'un compte{% endblock %}
+{% block title %}Formulaire d'inscription{% endblock %}
 
 {% block content %}
-    <article id="form-container">
+    <section id="form-container">
         <form method="POST">
             {% csrf_token %}
             <h2 class="form-title">Inscrivez-vous</h2>
@@ -12,7 +12,7 @@
             <button class="form-button"><a href="{% url 'login' %}">Retourner</a></button>
             <input class="form-button" type="submit" value="S'inscrire">
         </form>
-    </article>
+    </section>
 {% endblock %}
 
 <!--

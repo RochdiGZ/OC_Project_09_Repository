@@ -21,6 +21,10 @@ import flux.views
 from django.conf import settings
 from django.conf.urls.static import static
 
+import subscriptions.views
+import tickets.views
+import reviews.views
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", LoginView.as_view(
@@ -30,6 +34,9 @@ urlpatterns = [
     path("logout/", accounts.views.logout_user, name="logout"),
     path("home/", flux.views.home, name="home"),
     path("signup/", accounts.views.signup, name="signup"),
+    path("create-ticket/", tickets.views.create_ticket, name="create-ticket"),
+    path("create-review/", reviews.views.create_review, name="create-review"),
+    path("subscribers/", subscriptions.views.subscribers, name="subscribers"),
 ]
 
 if settings.DEBUG:
