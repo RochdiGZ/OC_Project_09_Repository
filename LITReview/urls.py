@@ -21,9 +21,10 @@ import flux.views
 from django.conf import settings
 from django.conf.urls.static import static
 
+import posts.views
+import reviews.views
 import subscriptions.views
 import tickets.views
-import reviews.views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -34,10 +35,11 @@ urlpatterns = [
     path("logout/", accounts.views.logout_user, name="logout"),
     path("home/", flux.views.home, name="home"),
     path("signup/", accounts.views.signup, name="signup"),
-    path("create-ticket/", tickets.views.create_ticket, name="create-ticket"),
+    path("posts/", posts.views.edit_posts, name="posts"),
     path("create-review/", reviews.views.create_review, name="create-review"),
     path("subscribers/", subscriptions.views.subscribers, name="subscribers"),
-]
+    path("create-ticket/", tickets.views.create_ticket, name="create-ticket"),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)

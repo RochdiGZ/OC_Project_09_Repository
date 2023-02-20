@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def edit_posts(request):
+    return render(request, "posts/edit_posts.html")

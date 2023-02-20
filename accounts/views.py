@@ -10,6 +10,7 @@ from accounts.models import CustomUser
 from .forms import UserRegistrationForm
 
 
+# https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP
 class LoginPage(View):
     form_class = forms.LoginForm
     template_name = 'accounts/login.html'
@@ -46,15 +47,9 @@ class CustomSignupForm(UserCreationForm):
         fields = UserCreationForm.Meta.fields  # fields = ("username",)
 
 
-class CustomSignupForm(UserCreationForm):
-    class Meta:
-        model = CustomUser
-        fields = UserCreationForm.Meta.fields  # fields = ("username",)
-
-
 def signup(request):
     if request.method == "POST":
-        form = UserRegistrationForm(request.POST)
+        form = UserRegistrationForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect("home")  # HttpResponse("Accueil du site !")
