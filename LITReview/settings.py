@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Add the accounts application
     "accounts",
-    "flux",
+    "feeds",
     "posts",
     "reviews",
     "subscriptions",

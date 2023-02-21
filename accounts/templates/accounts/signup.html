@@ -9,36 +9,8 @@
             <h2 class="form-title">Inscrivez-vous</h2>
             {{ form.as_p }}
             {# {% for message in errors.values %}<h3 style="color: red;">{{ message }}</h3> #}
-            <button class="form-button"><a href="{% url 'login' %}">Retourner</a></button>
+            <button class="form-button"><a href="{% url 'login' %}" type="button">Retourner</a></button>
             <input class="form-button" type="submit" value="S'inscrire">
         </form>
     </section>
 {% endblock %}
-
-<!--
-        <form method="POST">
-            {% csrf_token %}
-            <header>
-                <h2 class="form-title">Inscrivez-vous</h2>
-            </header>
-            <main>
-                <div class="form-input">
-                    <input type="password" placeholder="Mot de passe" name="password1" required>
-                </div>
-                <div class="form-input">
-                    <input type="password" placeholder="Confirmer mot de passe" name="password2" required>
-                </div>
-                <div>
-                    <a class="form-link" href=""><button>S'inscrire</button></a>
-                </div>
-                {% if error %}
-                    <small style="color: red;">
-                        {{ error }}
-                    </small>
-                {% endif %}
-                <div>
-                    <input class="form-button" type="submit" value="S'inscrire">
-                </div>
-            </main>
-        </form>
--->

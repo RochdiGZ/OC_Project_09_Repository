@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse
@@ -36,6 +37,7 @@ class LoginPage(View):
         return render(request, self.template_name, context={'form': form, 'message': message})
 
 
+@login_required
 def logout_user(request):
     logout(request)
     return redirect('login')
@@ -57,39 +59,3 @@ def signup(request):
         form = UserRegistrationForm()
 
     return render(request, "accounts/signup.html", {"form": form})
-
-
-"""
-def home(request):
-    return HttpResponse("Accueil du site !")
-"""
-"""
-def signup(request):
-    context = {}
-    if request.method == "POST":
-        form = CustomSignupForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("home")  # HttpResponse("Accueil du site !")
-        else:
-            context["errors"] = form.errors
-
-    form = UserCreationForm()
-    context["form"] = form
-    return render(request, "accounts/signup.html", context=context)
-
-"""
-"""
-def signup(request):
-    context = {}
-    if request.method == "POST":
-        username = request.POST.get("username")
-        password1 = request.POST.get("password1")
-        password2 = request.POST.get("password2")
-        if password1 != password2:
-            return render(request, "accounts/signup.html", context={"error": "Les mots de passe ne correspondent pas"})
-        CustomUser.objects.create_user(username=username, password=password1)
-        return HttpResponse(f"Bienvenue {username} !")
-    
-    return render(request, "accounts/signup.html")
-"""

@@ -13,9 +13,4 @@ class LoginForm(forms.Form):
 class UserRegistrationForm(UserCreationForm):
     class Meta:
         model = CustomUser
-        fields = ("username", "profile_photo")
-        widgets = {
-            "username": forms.TextInput(attrs={"placeholder": "Nom d'utilisateur"}),
-            "password": forms.TextInput(attrs={"placeholder": "Mot de passe"})
-        }
-
+        fields = ("username", )
