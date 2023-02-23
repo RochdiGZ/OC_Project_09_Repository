@@ -15,7 +15,7 @@
     <hr>
 
     <section id="form-container">
-        <form method="POST" action="{% url 'subscribers' %}">
+        <form method="POST">
             {% csrf_token %}
             <h2 class="form-title">Suivre d'autres utilisateurs</h2>
             {{ form.as_p }}

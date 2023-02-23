@@ -8,7 +8,7 @@ from django.views.generic import View
 from . import forms
 
 from accounts.models import CustomUser
-from .forms import UserRegistrationForm
+from .forms import SignupForm
 
 
 # https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP
@@ -51,11 +51,11 @@ class CustomSignupForm(UserCreationForm):
 
 def signup(request):
     if request.method == "POST":
-        form = UserRegistrationForm(request.POST, request.FILES)
+        form = SignupForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect("home")  # HttpResponse("Accueil du site !")
     else:
-        form = UserRegistrationForm()
+        form = SignupForm()
 
     return render(request, "accounts/signup.html", {"form": form})

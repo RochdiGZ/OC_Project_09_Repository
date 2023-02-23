@@ -3,7 +3,6 @@
 {% block title %}Céation d'un ticket{% endblock %}
 
 {% block content %}
-    <p>Créer un ticket</p>
     <hr>
     <ul>
         <li>LITReview</li>
@@ -13,4 +12,11 @@
         <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
     </ul>
     <hr>
+    <h1>Créer un ticket</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Envoyer">
+    </form>
+
 {% endblock %}

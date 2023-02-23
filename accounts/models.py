@@ -5,3 +5,9 @@ from django.db import models
 class CustomUser(AbstractUser):
     # https://docs.djangoproject.com/en/4.1/ref/models/fields/#field-types
     profile_photo = models.ImageField(blank=True, upload_to="", verbose_name="Photo de profil")
+
+    class Meta:
+        verbose_name = "Utilisateur"
+
+    def __str__(self):
+        return self.username

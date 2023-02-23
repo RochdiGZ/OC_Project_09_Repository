@@ -1,6 +1,9 @@
 from django import forms
 
+from . import models
 
-class SubscribersForm(forms.Form):
-    # https://docs.djangoproject.com/en/4.1/ref/forms/fields/
-    username = forms.CharField(label="Nom d'utilisateur", max_length=100)
+
+class SubscribersForm(forms.ModelForm):
+    class Meta:
+        model = models.UserFollows
+        fields = "__all__"

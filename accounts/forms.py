@@ -10,7 +10,7 @@ class LoginForm(forms.Form):
     password = forms.CharField(max_length=63, label="Mot de passe : ")
 
 
-class UserRegistrationForm(UserCreationForm):
+class SignupForm(UserCreationForm):
     class Meta:
         model = CustomUser
         fields = ("username", )

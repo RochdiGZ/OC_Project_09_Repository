@@ -3,7 +3,7 @@ from django import forms
 from . import models
 
 
-class CreateTicketForm(forms.ModelForm):
+class CreateReviewForm(forms.ModelForm):
     class Meta:
-        model = models.Ticket
+        model = models.Review
         fields = "__all__"

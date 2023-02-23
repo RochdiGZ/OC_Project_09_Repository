@@ -1,16 +1,15 @@
-from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect
 
-def signup(request):
-    if request.method == "POST":
-        form = UserRegistrationForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect("home")  # HttpResponse("Accueil du site !")
-    else:
-        form = UserRegistrationForm()
-
-    return render(request, "accounts/signup.html", {"form": form})
+from . import forms
 
 
 def create_ticket(request):
-    return render(request, "tickets/create_ticket.html")
+    if request.method == "POST":
+        form = forms.CreateTicketForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+            return HttpResponseRedirect(request.path)
+    else:
+        form = forms.CreateTicketForm()
+    return render(request, "tickets/create.html", context={"form": form})
