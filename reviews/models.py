@@ -16,3 +16,6 @@ class Review(models.Model):
 
     class Meta:
         verbose_name = "Critique"
+
+    def __str__(self):
+        return self.user

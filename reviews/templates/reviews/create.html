@@ -3,20 +3,82 @@
 {% block title %}Création d'une critique{% endblock %}
 
 {% block content %}
+    {% include "nav_bar.html" %}
+    {% block nav_bar %}
+    {% endblock %}
+    <h2 class="text-center">Création d'une critique pour un livre/article</h2>
+    <hr>
+    <div class="container">
+         <form method="POST" enctype="multipart/form-data">
+             {% csrf_token %}
+                <div class="mb-3">
+                    <h3>{{ ticket_form.title.label }}</h3>
+                    {{ ticket_form.title }}
+                </div>
+                <div class="mb-3">
+                    <h3>{{ ticket_form.description.label }}</h3>
+                    {{ ticket_form.description }}
+                </div>
+                <div class="mb-3">
+                    <h3>{{ ticket_form.image.label }}</h3>
+                    {{ ticket_form.image }}
+                </div>
+                <hr>
+                <h3 class="text-center">
+                    Publication d'une critique par l'utilisateur {{ request.user }}
+                </h3>
+                <hr>
+                <div class="container">
+                    <h3>{{ review_form.user.label.as_hidden }}</h3>
+                    {{ review_form.user.as_hidden }}
 
-    <hr>
-    <ul>
-        <li>LITReview</li>
-        <li><a href="{% url 'home' %}">Flux</a></li>
-        <li><a href="{% url 'posts' %}">Posts</a></li>
-        <li><a href="{% url 'subscribers' %}">Abonnemnets</a></li>
-        <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
-    </ul>
-    <hr>
-    <h1>Créer une critique</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Envoyer">
-    </form>
+                    <h3>{{ review_form.headline.label }}</h3>
+                    {{ review_form.headline }}
+
+                    <h3>{{ review_form.rating.label }}</h3>
+                    <div class="row mb-3">
+                        <div class="form-check col-sm mb-3">
+                            <input class="form-check-input" type="radio" name="rating" id="rating_0" value="0" required>
+                            <label class="form-check-label" for="rating_0">0</label>
+                        </div>
+                        <div class="form-check col-sm mb-3">
+                            <input class="form-check-input" type="radio" name="rating" id="rating_1" value="1" required>
+                            <label class="form-check-label" for="rating_1">1</label>
+                        </div>
+                        <div class="form-check col-sm mb-3">
+                            <input class="form-check-input" type="radio" name="rating" id="rating_2" value="2" required>
+                            <label class="form-check-label" for="rating_2">2</label>
+                        </div>
+                        <div class="form-check col-sm mb-3">
+                            <input class="form-check-input" type="radio" name="rating" id="rating_3" value="3" required>
+                            <label class="form-check-label" for="rating_3">3</label>
+                        </div>
+                        <div class="form-check col-sm mb-3">
+                            <input class="form-check-input" type="radio" name="rating" id="rating_4" value="4" required>
+                            <label class="form-check-label" for="rating_4">4</label>
+                        </div>
+                        <div class="form-check col-sm mb-3">
+                            <input class="form-check-input" type="radio" name="rating" id="rating_5" value="5"
+                                   checked required>
+                            <label class="form-check-label" for="rating_5">5</label>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <h3>{{ review_form.body.label }}</h3>
+                        {{ review_form.body }}
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <input class="btn btn-success" type="submit" value="Envoyer">
+                </div>
+         </form>
+    </div>
+
+    <div class="container-fluid text-center mb-3">
+         <p>LITReview | Copyright &copy; 2023</p>
+         <a class="alert alert-link" href="{% url 'home' %}">Flux</a>
+         <a class="alert alert-link" href="{% url 'posts' %}">Posts</a>
+         <a class="alert alert-link" href="{% url 'subscribers' %}">Abonnements</a>
+         <a class="alert alert-link" href="{% url 'logout' %}">Se déconnecter</a>
+     </div>
 {% endblock %}

@@ -3,5 +3,14 @@
 {% block title %}Suppression d'un ticket{% endblock %}
 
 {% block content %}
-
+    {% include "nav_bar.html" %}
+    {% block nav_bar %}
+    {% endblock %}
+    <div class="container-fluid text-center mb-3">
+         <p>LITReview | Copyright &copy; 2023</p>
+         <a class="alert alert-link" href="{% url 'home' %}">Flux</a>
+         <a class="alert alert-link" href="{% url 'posts' %}">Posts</a>
+         <a class="alert alert-link" href="{% url 'subscribers' %}">Abonnments</a>
+         <a class="alert alert-link" href="{% url 'logout' %}">Se déconnecter</a>
+     </div>
 {% endblock %}

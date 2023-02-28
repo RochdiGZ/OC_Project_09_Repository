@@ -3,18 +3,29 @@
 {% block title %}Page d'accueil{% endblock %}
 
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    <section id="signup">
-    <h2 class="form-title">Inscrivez-vous maintenant</h2>
-    <br>
-    <button type="button" class="form-button"><a href="{% url 'signup' %}">S'inscrire</a></button>
-    </section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm mb-3">
+                    <h2 class="text-center">Inscrivez-vous maintenant</h2>
+                    <div class="text-center">
+                        <a class="btn btn-secondary" href="{% url 'signup' %}">S'inscrire</a>
+                    </div>
+                </div>
+                <div class="col-sm mb-3">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <h2 class="text-center">Connectez-vous</h2>
+                        {{ form.as_p }}
+                        <div class="text-center">
+                            <input class="btn btn-success" type="submit" value="Se connecter">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
-    <section id="login">
-    <h2 class="form-title">Connectez-vous</h2>
-    {{ form.as_p }}
-    <input class="form-button" type="submit" value="Se connecter">
-    </section>
-</form>
+        <div class="container-fluid text-center mb-3">
+             <p>LITReview | Copyright &copy; 2023</p>
+             <a class="alert alert-link" href="{% url 'signup' %}">S'inscrire</a>
+        </div>
 {% endblock %}

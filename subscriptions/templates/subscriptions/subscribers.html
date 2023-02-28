@@ -3,23 +3,23 @@
 {% block title %}Editer les abonnés{% endblock %}
 
 {% block content %}
-    <p>Afficher les abonnés</p>
-    <hr>
-    <ul>
-        <li>LITReview</li>
-        <li><a href="{% url 'home' %}">Flux</a></li>
-        <li><a href="{% url 'posts' %}">Posts</a></li>
-        <li><a href="{% url 'subscribers' %}">Abonnemnets</a></li>
-        <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
-    </ul>
+    {% include "nav_bar.html" %}
+    {% block nav_bar %}
+    {% endblock %}
     <hr>
 
-    <section id="form-container">
+    <div class="container">
         <form method="POST">
             {% csrf_token %}
             <h2 class="form-title">Suivre d'autres utilisateurs</h2>
             {{ form.as_p }}
-            <input class="form-button" type="submit" value="Envoyer">
+            <input class="btn btn-success" type="submit" value="Envoyer">
         </form>
-    </section>
+    </div>
+    <div class="container-fluid text-center mb-3">
+         <p>LITReview | Copyright &copy; 2023</p>
+         <a class="alert alert-link" href="{% url 'home' %}">Flux</a>
+         <a class="alert alert-link" href="{% url 'posts' %}">Posts</a>
+         <a class="alert alert-link" href="{% url 'logout' %}">Se déconnecter</a>
+     </div>
 {% endblock %}

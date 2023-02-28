@@ -3,14 +3,19 @@
 {% block title %}Visualisation des posts{% endblock %}
 
 {% block content %}
-    <p>Visualiser les posts</p>
-    <hr>
-    <ul>
-        <li>LITReview</li>
-        <li><a href="{% url 'home' %}">Flux</a></li>
-        <li><a href="{% url 'posts' %}">Posts</a></li>
-        <li><a href="{% url 'subscribers' %}">Abonnemnets</a></li>
-        <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
-    </ul>
-    <hr>
+    {% include "nav_bar.html" %}
+    {% block nav_bar %}
+    {% endblock %}
+    <h2 class="text-center">Vos posts</h2>
+    <div class="container">
+        <p class="display-4">Il n'y aucun ticket publié ou aucune critique publiée !</p>
+        <p class="display-4">Veuillez publier un ticket ou une critique !</p>
+    </div>
+
+    <div class="container-fluid text-center mb-3">
+         <p>LITReview | Copyright &copy; 2023</p>
+         <a class="alert alert-link" href="{% url 'home' %}">Flux</a>
+         <a class="alert alert-link" href="{% url 'subscribers' %}">Abonnements</a>
+         <a class="alert alert-link" href="{% url 'logout' %}">Se déconnecter</a>
+     </div>
 {% endblock %}

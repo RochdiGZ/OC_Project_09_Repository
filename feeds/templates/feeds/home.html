@@ -3,18 +3,65 @@
 {% block title %}Page d'accueil{% endblock %}
 
 {% block content %}
-    <p>Vous êtes connecté ! Bienvenue à notre site !</p>
     <hr>
-    <ul>
-        <li>LITReview</li>
-        <li><a href="{% url 'home' %}">Flux</a></li>
-        <li><a href="{% url 'posts' %}">Posts</a></li>
-        <li><a href="{% url 'subscribers' %}">Abonnemnets</a></li>
-        <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
-    </ul>
+    {% include "nav_bar.html" %}
+    {% block nav_bar %}
+    {% endblock %}
     <hr>
-    <br>
-    <button class="form-button"><a href="{% url 'create-ticket' %}">Demander une critique</a></button>
-    <button class="form-button"><a href="{% url 'create-review' %}">Créer une critique</a></button>
-    <br>
+    <div class="text-center mb-3">
+        <a class="btn btn-primary" href="{% url 'create-ticket' %}">Demander une critique</a>
+        <a class="btn btn-secondary" href="{% url 'create-review' %}">Créer une critique</a>
+    </div>
+
+    <div class="container">
+        {% for ticket in tickets %}
+            <div class="col-sm mb-3">
+                <p class="display-4">Vous avez publié un ticket à {{ ticket.time_created }}</p>
+                <p class="display-4">{{ ticket.title }}</p>
+                <p class="display-4">{{ ticket.description }}</p>
+            </div>
+            <div class="row col-sm mb-3">
+                <div class="text-center mb-3">
+                    <a class="btn btn-secondary" href="{% url 'tickets/update' ticket_id=ticket.id %}">
+                        Modifier le ticket
+                    </a>
+                    <a class="btn btn-danger" href="{% url 'tickets/delete' ticket_id=ticket.id %}">
+                        Supprimer le ticket
+                    </a>
+                </div>
+            </div>
+            <hr>
+            {% empty %}
+                <div class="container">
+                    <p class="display-4">Il n'y aucun ticket ou aucune critique à afficher !</p>
+                    <p class="display-4">Veuillez créer un ticket ou une critique et suivre des utilisateurs !</p>
+                </div>
+        {% endfor %}
+    </div>
+    <div class="container">
+        {% for review in reviews %}
+            <div class="col-sm mb-3">
+                <p class="display-4">Vous avez publié une critique à {{ review.time_created }}</p>
+                <p class="display-4">{{ review.headline }} <span>Note = {{ review.rating }}</span> </p>
+                <p class="display-4">{{ review.body }}</p>
+            </div>
+            <div class="row col-sm mb-3">
+                <div class="text-center mb-3">
+                    <a class="btn btn-secondary" href="{% url 'reviews/update' ticket_id=ticket.id %}">
+                        Modifier la critique
+                    </a>
+                    <a class="btn btn-danger" href="{% url 'reviews/delete' ticket_id=ticket.id %}">
+                        Supprimer la critique
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="container-fluid text-center col-sm mb-3">
+         <p>LITReview | Copyright &copy; 2023</p>
+         <a class="alert alert-link" href="{% url 'posts' %}">Posts</a>
+         <a class="alert alert-link" href="{% url 'subscribers' %}">Abonnements</a>
+         <a class="alert alert-link" href="{% url 'logout' %}">Se déconnecter</a>
+     </div>
 {% endblock %}
