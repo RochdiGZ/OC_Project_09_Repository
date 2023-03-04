@@ -7,19 +7,60 @@
     {% block nav_bar %}
     {% endblock %}
     <hr>
-
     <div class="container">
-        <form method="POST">
+        <form method="POST" action="{% url 'subscribers' %}">
             {% csrf_token %}
-            <h2 class="form-title">Suivre d'autres utilisateurs</h2>
-            {{ form.as_p }}
-            <input class="btn btn-success" type="submit" value="Envoyer">
+            <div class="row justify-content-center">
+                <div class="col text-center">
+                    <div class="row justify-content-center">
+                        <h2 class="sub-title">Suivre d'autres utilisateurs</h2>
+                        <div class="error-id mb-3">
+                            {{message}}
+                        </div>
+                        <div class="col-8">
+                            <label for="usertofollow" class="visually-hidden">Nom d'utilisateur</label>
+                            <input type="text" class="form-control" id="usertofollow" placeholder="Nom d'utilisateur"
+                               name="name">
+                        </div>
+                        <div class="col-1">
+                            <button type="submit" name="sub" class="btn btn-primary mb-3">Envoyer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col text-center">
+                    <h2 class="sub-title">Abonnements</h2>
+                    {% for followed_user in followed_users %}
+                    <div class="input-group">
+                        <input type="text" class="form-control" value="{{followed_user.followed_user.username}}"
+                               aria-label="Nom personnage" readonly>
+                        <button class="btn btn-outline-danger" value="{{followed_user.followed_user.username}}"
+                                name="unsub" type="submit">Désabonner
+                        </button>
+                    </div>
+                    {% endfor %}
+                    {{unsub_user}}
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col text-center">
+                    <h2 class="sub-title">Abonnés</h2>
+                    {% for followed_by in followed_bys %}
+                        <input class="form-control" type="text" value="{{followed_by.user.username}}"
+                               aria-label="Nom Personnage" readonly>
+                    {% endfor %}
+                </div>
+            </div>
         </form>
     </div>
+
     <div class="container-fluid text-center mb-3">
          <p>LITReview | Copyright &copy; 2023</p>
          <a class="alert alert-link" href="{% url 'home' %}">Flux</a>
          <a class="alert alert-link" href="{% url 'posts' %}">Posts</a>
          <a class="alert alert-link" href="{% url 'logout' %}">Se déconnecter</a>
-     </div>
+    </div>
 {% endblock %}

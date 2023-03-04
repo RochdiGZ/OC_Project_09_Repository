@@ -6,16 +6,32 @@
     {% include "nav_bar.html" %}
     {% block nav_bar %}
     {% endblock %}
-    <h2 class="text-center">Vos posts</h2>
-    <div class="container">
-        <p class="display-4">Il n'y aucun ticket publié ou aucune critique publiée !</p>
-        <p class="display-4">Veuillez publier un ticket ou une critique !</p>
-    </div>
+        <h2 class="text-center">Vos posts</h2>
+        {% for element in elements %}
+            {% if element in tickets %}
+                {% include 'tickets/display_ticket.html' with ticket=element stop_btn=1 post=1 %}
+                <hr>
+            {% elif element in reviews %}
+                {% if element.ticket %}
+                    {% include 'reviews/display_review.html' with review=element post=1 %}
+                    <hr>
+                {% endif %}
+            {% endif %}
+            {% empty %}
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-sm">
+                        <p class="display-4">Il n'y aucun ticket publié ou aucune critique publiée !</p>
+                        <p class="display-4">Veuillez publier un ticket ou une critique !</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
 
-    <div class="container-fluid text-center mb-3">
-         <p>LITReview | Copyright &copy; 2023</p>
-         <a class="alert alert-link" href="{% url 'home' %}">Flux</a>
-         <a class="alert alert-link" href="{% url 'subscribers' %}">Abonnements</a>
-         <a class="alert alert-link" href="{% url 'logout' %}">Se déconnecter</a>
-     </div>
+        <div class="container-fluid text-center mb-3">
+             <p>LITReview | Copyright &copy; 2023</p>
+             <a class="alert alert-link" href="{% url 'home' %}">Flux</a>
+             <a class="alert alert-link" href="{% url 'subscribers' %}">Abonnements</a>
+             <a class="alert alert-link" href="{% url 'logout' %}">Se déconnecter</a>
+         </div>
 {% endblock %}

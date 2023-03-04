@@ -6,11 +6,27 @@
     {% include "nav_bar.html" %}
     {% block nav_bar %}
     {% endblock %}
-    <div class="container-fluid text-center mb-3">
-         <p>LITReview | Copyright &copy; 2023</p>
-         <a class="alert alert-link" href="{% url 'home' %}">Flux</a>
-         <a class="alert alert-link" href="{% url 'posts' %}">Posts</a>
-         <a class="alert alert-link" href="{% url 'subscribers' %}">Abonnments</a>
-         <a class="alert alert-link" href="{% url 'logout' %}">Se déconnecter</a>
-     </div>
+        <div class="container">
+            {% if ticket %}
+                <h2 class="align-self-center">Modification du ticket</h2>
+                <form class="form-inline" method="post" action="{% url 'update-ticket' ticket.id %}"
+                      enctype="multipart/form-data">
+                    {% include 'tickets/create.html' %}
+                </form>
+            {% else %}
+                <h2 class="align-self-center">Créer un ticket</h2>
+                <form class="form-inline" method="post" action="{% url 'update-ticket' %}"
+                      enctype="multipart/form-data">
+                    {% include 'tickets/create.html' %}
+                </form>
+            {% endif %}
+        </div>
+
+        <div class="container-fluid text-center mb-3">
+             <p>LITReview | Copyright &copy; 2023</p>
+             <a class="alert alert-link" href="{% url 'home' %}">Flux</a>
+             <a class="alert alert-link" href="{% url 'posts' %}">Posts</a>
+             <a class="alert alert-link" href="{% url 'subscribers' %}">Abonnments</a>
+             <a class="alert alert-link" href="{% url 'logout' %}">Se déconnecter</a>
+        </div>
 {% endblock %}

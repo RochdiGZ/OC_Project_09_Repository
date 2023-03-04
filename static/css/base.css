@@ -9,3 +9,28 @@
 a {
     text-align: center;
 }
+.img_post {
+    max-height : 350px;
+    max-width: 250px;
+    height: auto;
+    width: auto;
+    margin: 5px;
+}
+hr {
+    border: 5px solid black;
+}
+.img-preview {
+    display: none;
+}
+.rating {
+    text-decoration: none;
+    font-size: 1.5em;
+ }
+
+.rating-or {
+    color:orange;
+}
+
+.rating-bl {
+    color:black;
+}

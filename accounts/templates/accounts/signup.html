@@ -3,21 +3,25 @@
 {% block title %}Formulaire d'inscription{% endblock %}
 
 {% block content %}
-     <h2 class="text-center">Inscrivez-vous</h2>
+    <h2 class="text-center">Inscrivez-vous</h2>
      <div class="container">
             <div class="row">
                 <div class="col-sm mb-3">
-                    <form method="POST">
+                    <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
+                        <div class="text-danger mb-3">{{ message1 }}</div>
                         <div class="col-sm mb-3">
-                            <input class="form-control" type="text" id="username" placeholder="Nom d'utilisateur">
+                            <input class="form-control" type="text" name="username" placeholder="Nom d'utilisateur"
+                                    required>
                         </div>
                         <div class="col-sm mb-3">
-                            <input class="form-control" type="password" id="password1" placeholder="Mot de passe">
+                            <input class="form-control" type="password" name="password1" placeholder="Mot de passe"
+                                    required>
                         </div>
+                        <div class="text-danger mb-3">{{ message2 }}</div>
                         <div class="col-sm mb-3">
-                            <input class="form-control" type="password" id="password2"
-                                   placeholder="Confirmation du mot de passe">
+                            <input class="form-control" type="password" name="password2"
+                                   placeholder="Confirmation du mot de passe" required>
                         </div>
                         <div class="text-center mb-3">
                             <a class="btn btn-secondary" href="{% url 'login' %}">Retourner</a>
@@ -27,8 +31,7 @@
                 </div>
             </div>
      </div>
-
-    <div class="container-fluid text-center mb-3">
+     <div class="container-fluid text-center mb-3">
          <p>LITReview | Copyright &copy; 2023</p>
          <a class="alert alert-link" href="{% url 'login' %}">Se connecter</a>
      </div>

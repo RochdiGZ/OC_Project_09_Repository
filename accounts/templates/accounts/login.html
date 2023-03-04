@@ -11,9 +11,12 @@
                         <a class="btn btn-secondary" href="{% url 'signup' %}">S'inscrire</a>
                     </div>
                 </div>
-                <div class="col-sm mb-3">
+                <div class="col-lg mb-3">
                     <form method="POST">
                         {% csrf_token %}
+                        {% if form.errors %}
+                            {{ form.errors }}
+                        {% endif %}
                         <h2 class="text-center">Connectez-vous</h2>
                         {{ form.as_p }}
                         <div class="text-center">

@@ -8,55 +8,44 @@
     {% block nav_bar %}
     {% endblock %}
     <hr>
-    <div class="text-center mb-3">
-        <a class="btn btn-primary" href="{% url 'create-ticket' %}">Demander une critique</a>
-        <a class="btn btn-secondary" href="{% url 'create-review' %}">Créer une critique</a>
+    <div class="container">
+        <div class="text-center mb-3">
+            <a class="btn btn-primary" href="{% url 'update-ticket' %}" role="button">Demander une critique</a>
+            <a class="btn btn-secondary" href="{% url 'update-review' %}" role="button">Créer une critique</a>
+        </div>
     </div>
 
-    <div class="container">
-        {% for ticket in tickets %}
-            <div class="col-sm mb-3">
-                <p class="display-4">Vous avez publié un ticket à {{ ticket.time_created }}</p>
-                <p class="display-4">{{ ticket.title }}</p>
-                <p class="display-4">{{ ticket.description }}</p>
-            </div>
-            <div class="row col-sm mb-3">
-                <div class="text-center mb-3">
-                    <a class="btn btn-secondary" href="{% url 'tickets/update' ticket_id=ticket.id %}">
-                        Modifier le ticket
-                    </a>
-                    <a class="btn btn-danger" href="{% url 'tickets/delete' ticket_id=ticket.id %}">
-                        Supprimer le ticket
-                    </a>
-                </div>
-            </div>
-            <hr>
+    <div class="container mb-3">
+        {% for element in elements %}
+            {% if element in tickets %}
+                {% if element in tickets_stop_btn %}
+                    {% include 'tickets/display_ticket.html' with ticket=element stop_btn=1 %}
+                    <hr>
+                {% else %}
+                    {% include 'tickets/display_ticket.html' with ticket=element %}
+                    <hr>
+                {% endif %}
+            {% elif element in reviews %}
+                {% include 'reviews/display_review.html' with review=element %}
+                <hr>
+            {% endif %}
+
             {% empty %}
                 <div class="container">
-                    <p class="display-4">Il n'y aucun ticket ou aucune critique à afficher !</p>
-                    <p class="display-4">Veuillez créer un ticket ou une critique et suivre des utilisateurs !</p>
+                    <div class="row justify-content-center">
+                        <div class="col-sm">
+                            <p class="display-4">
+                                Il n'y aucun ticket ou aucune critique à afficher !
+                            </p>
+                            <p class="display-4">
+                                Veuillez créer un ticket ou une critique et suivre des utilisateurs !
+                            </p>
+                        </div>
+                    </div>
                 </div>
         {% endfor %}
     </div>
-    <div class="container">
-        {% for review in reviews %}
-            <div class="col-sm mb-3">
-                <p class="display-4">Vous avez publié une critique à {{ review.time_created }}</p>
-                <p class="display-4">{{ review.headline }} <span>Note = {{ review.rating }}</span> </p>
-                <p class="display-4">{{ review.body }}</p>
-            </div>
-            <div class="row col-sm mb-3">
-                <div class="text-center mb-3">
-                    <a class="btn btn-secondary" href="{% url 'reviews/update' ticket_id=ticket.id %}">
-                        Modifier la critique
-                    </a>
-                    <a class="btn btn-danger" href="{% url 'reviews/delete' ticket_id=ticket.id %}">
-                        Supprimer la critique
-                    </a>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
+
 
     <div class="container-fluid text-center col-sm mb-3">
          <p>LITReview | Copyright &copy; 2023</p>

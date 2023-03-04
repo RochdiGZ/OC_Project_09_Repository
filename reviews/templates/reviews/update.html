@@ -6,6 +6,16 @@
     {% include "nav_bar.html" %}
     {% block nav_bar %}
     {% endblock %}
+    <div class="container">
+        <h2 class="text-center mt-3">Créer une critique</h2>
+        <form class="form-inline container" method="post"
+              action="{% url 'update-review' %}"
+              enctype="multipart/form-data">
+            {% include 'tickets/create.html' with stop_btn=1 %}
+            <hr>
+            {% include 'reviews/create.html'%}
+        </form>
+    </div>
 
     <div class="container-fluid text-center mb-3">
          <p>LITReview | Copyright &copy; 2023</p>

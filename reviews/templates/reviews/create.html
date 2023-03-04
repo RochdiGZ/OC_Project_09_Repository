@@ -1,84 +1,81 @@
-{% extends "base.html" %}
-
-{% block title %}Création d'une critique{% endblock %}
-
-{% block content %}
-    {% include "nav_bar.html" %}
-    {% block nav_bar %}
-    {% endblock %}
-    <h2 class="text-center">Création d'une critique pour un livre/article</h2>
-    <hr>
-    <div class="container">
-         <form method="POST" enctype="multipart/form-data">
-             {% csrf_token %}
-                <div class="mb-3">
-                    <h3>{{ ticket_form.title.label }}</h3>
-                    {{ ticket_form.title }}
-                </div>
-                <div class="mb-3">
-                    <h3>{{ ticket_form.description.label }}</h3>
-                    {{ ticket_form.description }}
-                </div>
-                <div class="mb-3">
-                    <h3>{{ ticket_form.image.label }}</h3>
-                    {{ ticket_form.image }}
-                </div>
-                <hr>
-                <h3 class="text-center">
-                    Publication d'une critique par l'utilisateur {{ request.user }}
-                </h3>
-                <hr>
-                <div class="container">
-                    <h3>{{ review_form.user.label.as_hidden }}</h3>
-                    {{ review_form.user.as_hidden }}
-
-                    <h3>{{ review_form.headline.label }}</h3>
-                    {{ review_form.headline }}
-
-                    <h3>{{ review_form.rating.label }}</h3>
-                    <div class="row mb-3">
-                        <div class="form-check col-sm mb-3">
-                            <input class="form-check-input" type="radio" name="rating" id="rating_0" value="0" required>
-                            <label class="form-check-label" for="rating_0">0</label>
-                        </div>
-                        <div class="form-check col-sm mb-3">
-                            <input class="form-check-input" type="radio" name="rating" id="rating_1" value="1" required>
-                            <label class="form-check-label" for="rating_1">1</label>
-                        </div>
-                        <div class="form-check col-sm mb-3">
-                            <input class="form-check-input" type="radio" name="rating" id="rating_2" value="2" required>
-                            <label class="form-check-label" for="rating_2">2</label>
-                        </div>
-                        <div class="form-check col-sm mb-3">
-                            <input class="form-check-input" type="radio" name="rating" id="rating_3" value="3" required>
-                            <label class="form-check-label" for="rating_3">3</label>
-                        </div>
-                        <div class="form-check col-sm mb-3">
-                            <input class="form-check-input" type="radio" name="rating" id="rating_4" value="4" required>
-                            <label class="form-check-label" for="rating_4">4</label>
-                        </div>
-                        <div class="form-check col-sm mb-3">
-                            <input class="form-check-input" type="radio" name="rating" id="rating_5" value="5"
-                                   checked required>
-                            <label class="form-check-label" for="rating_5">5</label>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <h3>{{ review_form.body.label }}</h3>
-                        {{ review_form.body }}
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <input class="btn btn-success" type="submit" value="Envoyer">
-                </div>
-         </form>
-    </div>
-
-    <div class="container-fluid text-center mb-3">
-         <p>LITReview | Copyright &copy; 2023</p>
-         <a class="alert alert-link" href="{% url 'home' %}">Flux</a>
-         <a class="alert alert-link" href="{% url 'posts' %}">Posts</a>
-         <a class="alert alert-link" href="{% url 'subscribers' %}">Abonnements</a>
-         <a class="alert alert-link" href="{% url 'logout' %}">Se déconnecter</a>
+{% load static %}
+ {% csrf_token %}
+ <p>Critique</p>
+ <div class="row justify-content-center">
+     <div class="col mt-3">
+        <p>Titre</p>
+        <input class="form-control" type="text" name="headline" maxlength="128"
+               value="{{actual_review.headline}}" required>
      </div>
-{% endblock %}
+ </div>
+ <div class="row justify-content-center">
+     <div class="col mt-3">
+         <p>Note</p>
+         <div class="row justify-content-center">
+         <div class="col-1 form-check">
+         {% if actual_review.rating == 0 %}
+        <input class="form-check-input" type="radio" name="rating" id="rating1" value="0">
+        <label class="form-check-label" for="rating1">0</label>
+        {% endif %}
+        </div>
+         <div class="col-1 form-check">
+
+             <input class="form-check-input" type="radio" name="rating" id="rating2" value="1">
+             <label class="form-check-label" for="rating2">1</label>
+
+         </div>
+         <div class="col-1 form-check">
+
+            <input class="form-check-input" type="radio" name="rating" id="rating3" value="2">
+            <label class="form-check-label" for="rating3">2</label>
+
+         </div>
+         <div class="col-1 form-check">
+
+            <input class="form-check-input" type="radio" name="rating" id="rating4" value="3">
+            <label class="form-check-label" for="rating4">3</label>
+
+         </div>
+         <div class="col-1 form-check">
+
+            <input class="form-check-input" type="radio" name="rating" id="rating5" value="4">
+            <label class="form-check-label" for="rating5">4</label>
+
+         </div>
+         <div class="col-1 form-check">
+
+            <input class="form-check-input" type="radio" name="rating" id="rating6" value="5">
+            <label class="form-check-label" for="rating6">5</label>
+
+         </div>
+     </div>
+     </div>
+ </div>
+ <div class="row justify-content-center">
+    <div class="col mt-3">
+        <p>Commentaire</p>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" maxlength="8192"
+                  name="body" required>{{actual_review.body}}</textarea>
+    </div>
+ </div>
+ {% if not stop_btn %}
+     <div class="d-grid justify-content-end">
+         <input class="btn btn-primary mt-3" type="submit" value="Envoyer">
+     </div>
+ {% endif %}
+
+<script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+      integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+      crossorigin="anonymous"
+    ></script>

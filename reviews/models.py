@@ -18,4 +18,4 @@ class Review(models.Model):
         verbose_name = "Critique"
 
     def __str__(self):
-        return self.user
+        return f"Critique du ticket {self.ticket} par {self.user}"

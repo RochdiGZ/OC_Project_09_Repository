@@ -11,4 +11,7 @@ class UserFollows(models.Model):
     class Meta:
         unique_together = ('user', 'followed_user', )
 
-        verbose_name = "Suivi"
+        verbose_name = "Abonnement: abonné/suivi"
+
+    def __str__(self):
+        return f"{self.user} | {self.followed_user}"
