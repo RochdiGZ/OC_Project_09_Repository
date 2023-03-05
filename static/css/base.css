@@ -1,7 +1,18 @@
+form {
+        /* width: 300px; */
+        margin: 0px auto;
+      }
+input {
+    margin: 0.4rem;
+}
+label {
+  margin-right: 16px;
+  line-height: 32px;
+}
 .logo {
-  max-width: 50%;
-  max-height: 50%;
-  display: block;
+  max-width: 5rem;
+  max-height: 8rem;
+  display: flex;
   margin-left: auto;
   margin-right: auto;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -33,4 +44,7 @@ hr {
 
 .rating-bl {
     color:black;
+}
+a:hover {
+  background-color: lightblue;
 }

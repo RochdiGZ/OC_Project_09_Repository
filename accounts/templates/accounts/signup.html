@@ -3,30 +3,36 @@
 {% block title %}Formulaire d'inscription{% endblock %}
 
 {% block content %}
-    <h2 class="text-center">Inscrivez-vous</h2>
-     <div class="container">
-            <div class="row">
-                <div class="col-sm mb-3">
+
+     <div class="container mb-3">
+            <div class="row justify-content-center">
+                <div class="col-sm justify-content-center mb-3">
                     <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <div class="text-danger mb-3">{{ message1 }}</div>
-                        <div class="col-sm mb-3">
-                            <input class="form-control" type="text" name="username" placeholder="Nom d'utilisateur"
-                                    required>
+                        <h2 class="col-sm text-center">Inscrivez-vous</h2>
+                        {% if message1 %}
+                        <div class="col-sm text-danger mb-3">{{ message1 }}</div>
+                        {% endif %}
+                        <div class="col-sm justify-content-center mb-3">
+                            <input class="form-control" type="text" name="username"
+                                   placeholder="Nom d'utilisateur" required>
                         </div>
-                        <div class="col-sm mb-3">
-                            <input class="form-control" type="password" name="password1" placeholder="Mot de passe"
-                                    required>
+                        <div class="col-sm justify-content-center mb-3">
+                            <input class="form-control" type="password" name="password1"
+                                   placeholder="Mot de passe" required>
                         </div>
-                        <div class="text-danger mb-3">{{ message2 }}</div>
-                        <div class="col-sm mb-3">
+                        {% if message2 %}
+                            <div class="text-danger mb-3">{{ message2 }}</div>
+                        {% endif %}
+                        <div class="col-sm justify-content-center mb-3">
                             <input class="form-control" type="password" name="password2"
                                    placeholder="Confirmation du mot de passe" required>
                         </div>
-                        <div class="text-center mb-3">
+                        <div class="col-sm text-center mb-3">
                             <a class="btn btn-secondary" href="{% url 'login' %}">Retourner</a>
                             <input class="btn btn-success" type="submit" value="S'inscrire">
                         </div>
+
                     </form>
                 </div>
             </div>

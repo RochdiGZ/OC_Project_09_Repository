@@ -38,7 +38,7 @@ def home(request):
     sorted_list = sorted(elements, key=lambda x: x.time_created, reverse=True)
     # On recherche les reviews de l'utilisateur
     user_review = Review.objects.filter(user=user)
-    # On crée une liste de tickets déjà critiqué par l'utilisateur
+    # On crée une liste de tickets déjà critiqués par l'utilisateur
     tickets_stop_btn = [review.ticket for review in user_review]
     context = {
         'elements': sorted_list,
