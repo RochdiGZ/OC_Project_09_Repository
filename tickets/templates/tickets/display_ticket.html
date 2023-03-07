@@ -1,11 +1,11 @@
 {% load static %}
 <div class="container mb-3">
     <div class="row justify-content-between">
-        <p class="display-6 col-auto">{{ ticket.user.username }} a publié un ticket</p>
-        <p class="display-6 col-auto">{{ ticket.time_created }}</p>
+        <p class="h4 col-auto">{{ ticket.user.username }} a publié un ticket</p>
+        <p class="h4 col-auto">{{ ticket.time_created }}</p>
     </div>
-    <p class="display-4">{{ ticket.title }}</p>
-    <p class=" display-4">{{ ticket.description }}</p>
+    <p class="h3">{{ ticket.title }}</p>
+    <p class="h3">{{ ticket.description }}</p>
     {% if ticket.image %}
         <div class="container">
             <div class="row justify-content-center">
@@ -18,7 +18,7 @@
         </div>
     {% endif %}
     {% if not stop_btn %}
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <div class="container d-grid gap-2 d-md-flex justify-content-md-end">
             <a href="{% url 'reply-ticket' ticket.id %}" class="col-auto btn btn-primary" role="button">
                 Créer une critique
             </a>
@@ -27,10 +27,10 @@
     {% if post %}
         <form class="form-inline" method="post">
             {% csrf_token %}
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+            <div class="container d-grid gap-2 d-md-flex justify-content-md-end mt-3">
                 <a href="{% url 'update-ticket' ticket.id %}"
                         class="col-auto btn btn-primary mx-3" role="button">Modifier</a>
-                <button class="col-auto btn btn-primary" role="button" type="submit" name="ticket_delete"
+                <button class="col-auto btn btn-danger mx-3" role="button" type="submit" name="ticket_delete"
                         value="{{ ticket.id }}">Supprimer</button>
             </div>
         </form>

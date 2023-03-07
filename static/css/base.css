@@ -38,13 +38,18 @@ hr {
     font-size: 1.5em;
  }
 
-.rating-or {
-    color:orange;
+.rating-gold {
+    color:gold;
 }
 
-.rating-bl {
-    color:black;
+.rating-silver {
+    color:silver;
 }
 a:hover {
   background-color: lightblue;
 }
+/*
+.bg-custom {
+    background-image: url("../bg_LitReview.jpg");
+}
+*/

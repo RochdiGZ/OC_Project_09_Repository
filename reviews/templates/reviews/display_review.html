@@ -1,25 +1,31 @@
 
     <div class="container">
         <div class="row justify-content-between">
-            <p class="display-6 col-auto">{{review.user.username}} a publié une critique</p>
-            <p class="display-6 col-auto">{{review.time_created}}</p>
+            <p class="h4 col-auto">{{review.user.username}} a publié une critique</p>
+            <p class="h4 col-auto">
+                {{review.time_created}}
+            </p>
         </div>
         <div>
-            {{ review.headline }} - Note : {{ review.rating }}&emsp;
+            <span class="h3">{{ review.headline }} - Note : {{ review.rating }}&emsp;</span>
             {% for i in stars %}
                 {% if i <= review.rating %}
-                    <i class="rating rating-or">☆</i>
+                    <i class="rating rating-gold">&#9733;</i>
+                    <!-- <i class="rating rating-gold">&#9734</i>
+                    <span class="rating rating-gold">&starf;</span> -->
                 {% else %}
-                    <i class="rating rating-bl">☆</i>
+                    <i class="rating rating-silver">&#9733;</i>
+                    <!-- <i class="rating visually-hidden">&#9734</i>
+                    <span class="rating rating-silver">&starf;</span> -->
                 {% endif %}
             {% endfor %}
         </div>
-        <p class="display-4">{{review.body}}</p>
+        <p class="h3">{{review.body}}</p>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-6 review-bg">
-                    <p>Ticket - {{review.ticket.user.username}}</p>
-                    <p class="display-4">{{review.ticket.title}}</p>
+                    <p class="h4">Ticket - {{review.ticket.user.username}}</p>
+                    <p class="h3">{{review.ticket.title}}</p>
                     {% if review.ticket.image %}
                         <div class="row justify-content-center img_post border border-primary rounded">
                             <img src="{{review.ticket.image.url}}">
@@ -31,10 +37,10 @@
         {% if post %}
             <form class="form-inline" method="post">
                 {% csrf_token %}
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <div class="container d-grid gap-2 d-md-flex justify-content-md-end mt-3">
                     <a href="{% url 'reply-ticket' review.ticket.id %}" class="col-auto btn btn-primary mx-3"
                             role="button">Modifier</a>
-                    <button class="col-auto btn btn-primary" role="button" type="submit" name="review_delete"
+                    <button class="col-auto btn btn-danger mx-3" role="button" type="submit" name="review_delete"
                             value="{{review.id}}">Supprimer</button>
                 </div>
             </form>
