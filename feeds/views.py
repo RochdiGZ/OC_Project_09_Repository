@@ -9,7 +9,7 @@ STARS = [1, 2, 3, 4, 5]
 
 
 @login_required
-def home(request):
+def feed(request):
     # On sélectionne l'utilisateur et les personnes suivies
     user = get_user(request)
     followed_users = [pair.followed_user for pair in UserFollows.objects.filter(user=user)]
@@ -48,4 +48,4 @@ def home(request):
         'followed_users': user_posts,
         'stars': STARS
     }
-    return render(request, 'feeds/home.html', context)
+    return render(request, 'feeds/feed.html', context)

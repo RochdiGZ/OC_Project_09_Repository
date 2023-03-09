@@ -6,7 +6,7 @@ from django.shortcuts import render
 from . import forms
 from tickets.models import Ticket
 from reviews.models import Review
-from feeds.views import home
+from feeds.views import feed
 
 
 @login_required
@@ -17,7 +17,7 @@ def create_ticket(request):
             # user field is required (foreign key)
             form.instance.user = request.user
             form.save(commit=True)
-            return HttpResponseRedirect(request.path)  # return HttpResponseRedirect(reverse("home"))
+            return HttpResponseRedirect(request.path)  # return HttpResponseRedirect(reverse("feed"))
     else:
         form = forms.TicketForm()
     return render(request, "tickets/create.html", context={"form": form})
@@ -49,7 +49,7 @@ def update_ticket(request, ticket_id=""):
             ticket = Ticket(title=title, description=description, user=user, image=image)
         ticket.full_clean()
         ticket.save()
-        return home(request)
+        return feed(request)
     return render(request, 'tickets/update.html', context)
 
 
@@ -78,6 +78,6 @@ def reply_ticket(request, ticket_id):
             review = Review(rating=rating, headline=headline, body=body, user=user, ticket=ticket)
             review.full_clean()
             review.save()
-        return home(request)
+        return feed(request)
 
     return render(request, 'tickets/reply.html', context)

@@ -33,10 +33,10 @@
                 <div class="col text-center">
                     <h2 class="sub-title">Abonnements</h2>
                     {% for followed_user in followed_users %}
-                    <div class="input-group gap-2">
-                        <input type="text" class="form-control mb-2" value="{{followed_user.followed_user.username}}"
+                    <div class="input-group gap-1">
+                        <input type="text" class="form-control mb-1" value="{{followed_user.followed_user.username}}"
                                aria-label="Nom personnage" readonly>
-                        <button class="btn btn-outline-danger mb-2" value="{{followed_user.followed_user.username}}"
+                        <button class="btn btn-outline-danger mb-1" value="{{followed_user.followed_user.username}}"
                                 name="unsub" type="submit">Désabonner
                         </button>
                     </div>
@@ -49,7 +49,7 @@
                 <div class="col text-center">
                     <h2 class="sub-title">Abonnés</h2>
                     {% for followed_by in followed_bys %}
-                        <input class="form-control" type="text" value="{{followed_by.user.username}}"
+                        <input class="form-control mb-1" type="text" value="{{followed_by.user.username}}"
                                aria-label="Nom Personnage" readonly>
                     {% endfor %}
                 </div>
@@ -58,7 +58,7 @@
     </div>
 
     <div class="container-fluid text-center mb-3">
-         <a class="alert alert-link" href="{% url 'home' %}">Flux</a>
+         <a class="alert alert-link" href="{% url 'feed' %}">Flux</a>
          <a class="alert alert-link" href="{% url 'posts' %}">Posts</a>
          <a class="alert alert-link" href="{% url 'logout' %}">Se déconnecter</a>
          <p class="mt-3"> LITReview | Copyright &copy; 2023</p>

@@ -28,7 +28,7 @@ class LoginPage(View):
             )
             if user is not None:
                 login(request, user)
-                return redirect('home')
+                return redirect('feed')
             else:
                 message = 'Identifiants invalides.'
         return render(request, self.template_name, context={'form': form, 'message': message})
@@ -56,7 +56,7 @@ def signup(request):
                 if not user.exists():
                     user = CustomUser.objects.create_user(username=username, password=password1)
                     login(request, user)
-                    return redirect("home")
+                    return redirect("feed")
         except ValueError:
             message1 = "Le nom d'utilisateur existe déjà"
         except ValidationError:
