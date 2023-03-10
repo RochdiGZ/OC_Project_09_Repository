@@ -44,7 +44,8 @@ python manage.py runserver
 ``` 
 Une fois le serveur de développement lancé, vous pouvez voir, dans un navigateur web, la page de connexion à 
 l'application `LiTReview` via l'adresse `http://127.0.0.1:8000`.
-- `Vous pouvez utiliser le nom du super utilisateur Rochdi et le mot de pase secret@django`
+- `Vous pouvez utiliser le nom du super utilisateur Rochdi et le mot de pase secret@django` 
+pour se connecter à notre application.
 ### ⚙️ Créer un autre super utilisateur pour se connecter à partir de l'interface de l'administartion Django
 ```bash
 python manage.py createsuperuser
