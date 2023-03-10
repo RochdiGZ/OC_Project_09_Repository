@@ -145,4 +145,4 @@ LOGIN_URL = "login"
 
 LOGIN_REDIRECT_URL = "feed"
 
-DATE_INPUT_FORMATS = ('%Y-%m-%d %H:%M %Z', )
+DATE_INPUT_FORMATS = ('%H:%M, %d %b %Y', )
