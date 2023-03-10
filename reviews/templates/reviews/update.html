@@ -1,16 +1,20 @@
 {% extends "base.html" %}
 
-{% block title %}Modification d'une critique{% endblock %}
+{% block title %}Créer une critique{% endblock %}
 
 {% block content %}
     {% include "nav_bar.html" %}
     {% block nav_bar %}
     {% endblock %}
     <div class="container">
-        <h2 class="text-center mt-3">Créer une critique</h2>
+        <h2 class="text-center mt-3">Créer une critique (pas en réponse à un ticket)</h2>
         <form class="form-inline container" method="post"
               action="{% url 'update-review' %}"
               enctype="multipart/form-data">
+            {% csrf_token %}
+            {% if form.errors %}
+                {{ form.errors }}
+            {% endif %}
             {% include 'tickets/create.html' with stop_btn=1 %}
             <hr>
             {% include 'reviews/create.html'%}

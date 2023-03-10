@@ -20,18 +20,25 @@ label {
 a {
     text-align: center;
 }
+a:hover {
+  background-color: lightblue;
+}
 .img_post {
-    max-height : 350px;
+    max-height : 400px;
     max-width: 250px;
     height: auto;
     width: auto;
     margin: 5px;
 }
+.img-preview {
+    display: none;
+}
 hr {
     border: 5px solid black;
 }
-.img-preview {
-    display: none;
+.description {
+    text-align: justify;
+    font-style: italic;
 }
 .rating {
     text-decoration: none;
@@ -39,17 +46,15 @@ hr {
  }
 
 .rating-gold {
-    color:gold;
+    color:orange;
 }
 
 .rating-silver {
     color:silver;
 }
-a:hover {
-  background-color: lightblue;
-}
+
 /*
 .bg-custom {
-    background-image: url("../bg_LitReview.jpg");
+    background-image: url("../Green.jpg");
 }
 */

@@ -1,48 +1,49 @@
-
+{% load static %}
+<div class="container">
+    <div class="row justify-content-between">
+        <p class="h4 text-light bg-dark col-auto">{{ review.user.username|lower|capfirst }} a publié une critique</p>
+        <p class="h4 text-light bg-dark col-auto">
+            {{ review.time_created }}
+        </p>
+    </div>
+    <div>
+        <span class="h3 text-danger">{{ review.headline|capfirst }} - </span>
+        <span class="h3 text-warning">Note : {{ review.rating }}&emsp;</span>
+        {% for i in stars %}
+            {% if i <= review.rating %}
+                <i class="rating rating-gold">&#9733;</i>
+                <!-- <i class="rating rating-gold">&#9734</i>
+                <span class="rating rating-gold">&starf;</span> -->
+            {% else %}
+                <i class="rating rating-silver">&#9733;</i>
+                <!-- <i class="rating visually-hidden">&#9734</i>
+                <span class="rating rating-silver">&starf;</span> -->
+            {% endif %}
+        {% endfor %}
+    </div>
+    <p class="h3 description">{{ review.body|capfirst }}</p>
     <div class="container">
-        <div class="row justify-content-between">
-            <p class="h4 col-auto">{{review.user.username}} a publié une critique</p>
-            <p class="h4 col-auto">
-                {{review.time_created}}
-            </p>
-        </div>
-        <div>
-            <span class="h3">{{ review.headline }} - Note : {{ review.rating }}&emsp;</span>
-            {% for i in stars %}
-                {% if i <= review.rating %}
-                    <i class="rating rating-gold">&#9733;</i>
-                    <!-- <i class="rating rating-gold">&#9734</i>
-                    <span class="rating rating-gold">&starf;</span> -->
-                {% else %}
-                    <i class="rating rating-silver">&#9733;</i>
-                    <!-- <i class="rating visually-hidden">&#9734</i>
-                    <span class="rating rating-silver">&starf;</span> -->
+        <div class="row justify-content-center">
+            <div class="col-6 review-bg">
+                <p class="h4 text-primary">Ticket - {{review.ticket.user.username|lower|capfirst}}</p>
+                <p class="h3 text-danger">{{ review.ticket.title|capfirst }}</p>
+                {% if review.ticket.image %}
+                    <div class="row justify-content-center img_post border border-primary rounded">
+                        <img src="{{review.ticket.image.url}}">
+                    </div>
                 {% endif %}
-            {% endfor %}
-        </div>
-        <p class="h3">{{review.body}}</p>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-6 review-bg">
-                    <p class="h4">Ticket - {{review.ticket.user.username}}</p>
-                    <p class="h3">{{review.ticket.title}}</p>
-                    {% if review.ticket.image %}
-                        <div class="row justify-content-center img_post border border-primary rounded">
-                            <img src="{{review.ticket.image.url}}">
-                        </div>
-                    {% endif %}
-                </div>
             </div>
         </div>
-        {% if post %}
-            <form class="form-inline" method="post">
-                {% csrf_token %}
-                <div class="container d-grid gap-2 d-md-flex justify-content-md-end mt-3">
-                    <a href="{% url 'reply-ticket' review.ticket.id %}" class="col-auto btn btn-primary mx-3"
-                            role="button">Modifier</a>
-                    <button class="col-auto btn btn-danger mx-3" role="button" type="submit" name="review_delete"
-                            value="{{review.id}}">Supprimer</button>
-                </div>
-            </form>
-        {% endif %}
     </div>
+    {% if post %}
+        <form class="form-inline" method="post">
+            {% csrf_token %}
+            <div class="container d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+                <a href="{% url 'reply-ticket' review.ticket.id %}" class="col-auto btn btn-primary mx-3"
+                        role="button">Modifier</a>
+                <button class="col-auto btn btn-danger mx-3" role="button" type="submit" name="review_delete"
+                        value="{{review.id}}">Supprimer</button>
+            </div>
+        </form>
+    {% endif %}
+</div>

@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import get_user
 from tickets.models import Ticket
 from reviews.models import Review
-import os
 
 STARS = [1, 2, 3, 4, 5]
 
@@ -20,8 +19,6 @@ def edit_posts(request):
     if 'ticket_delete' in request.POST:
         id_to_delete = request.POST.get('ticket_delete')
         ticket_to_delete = Ticket.objects.get(id=id_to_delete)
-        if ticket_to_delete.image and os.path.exists(ticket_to_delete.image.path):
-            os.remove(ticket_to_delete.image.path)
         ticket_to_delete.delete()
         return redirect('posts')
     # Cas où l'utilisateur appuie sur le bouton Supprimer pour supprimer une review

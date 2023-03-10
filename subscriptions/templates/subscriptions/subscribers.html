@@ -1,7 +1,5 @@
 {% extends "base.html" %}
-
 {% block title %}Editer les abonnés{% endblock %}
-
 {% block content %}
     {% include "nav_bar.html" %}
     {% block nav_bar %}
@@ -14,8 +12,8 @@
                 <div class="col text-center">
                     <div class="row justify-content-center">
                         <h2 class="sub-title">Suivre d'autres utilisateurs</h2>
-                        <div class="error-id mb-3">
-                            {{message}}
+                        <div class="error-id text-danger mb-3">
+                            {{ message }}
                         </div>
                         <div class="col-8">
                             <label for="usertofollow" class="visually-hidden">Nom d'utilisateur</label>
@@ -34,9 +32,11 @@
                     <h2 class="sub-title">Abonnements</h2>
                     {% for followed_user in followed_users %}
                     <div class="input-group gap-1">
-                        <input type="text" class="form-control mb-1" value="{{followed_user.followed_user.username}}"
+                        <input type="text" class="form-control mb-1"
+                               value="{{followed_user.followed_user.username|lower|capfirst}}"
                                aria-label="Nom personnage" readonly>
-                        <button class="btn btn-outline-danger mb-1" value="{{followed_user.followed_user.username}}"
+                        <button class="btn btn-outline-danger mb-1"
+                                value="{{followed_user.followed_user.username}}"
                                 name="unsub" type="submit">Désabonner
                         </button>
                     </div>
@@ -49,7 +49,8 @@
                 <div class="col text-center">
                     <h2 class="sub-title">Abonnés</h2>
                     {% for followed_by in followed_bys %}
-                        <input class="form-control mb-1" type="text" value="{{followed_by.user.username}}"
+                        <input class="form-control mb-1" type="text"
+                               value="{{followed_by.user.username|lower|capfirst}}"
                                aria-label="Nom Personnage" readonly>
                     {% endfor %}
                 </div>

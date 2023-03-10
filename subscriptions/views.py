@@ -22,8 +22,12 @@ def subscribers(request):
                 )
                 pair.full_clean()
                 pair.save()
+            elif name == user.username:
+                message = "Vous ne pouvez pas souscrire à vous même !"
+            elif name in [pair.followed_user.username for pair in UserFollows.objects.filter(user=user)]:
+                message = "Vous suivez déjà cet utilisateur !"
             else:
-                message = "Le nom rentré n'a pas été trouvé, veuillez recommencer."
+                message = "Le nom d'utilisateur n'existe pas dans la liste des utilisateurs inscrits !"
         # Cas où l'utilisateur souhaite arrêter de suivre une personne
         elif 'unsub' in request.POST:
             unsub_name = request.POST.get('unsub')

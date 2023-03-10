@@ -28,7 +28,7 @@ urlpatterns = [
          name="login"),
     path("logout/", accounts.views.logout_user, name="logout"),
     path("signup/", include("accounts.urls")),
-    path("home/", include("feeds.urls")),
+    path("feed/", include("feeds.urls")),
     path("posts/", include("posts.urls")),
     path("reviews/", include("reviews.urls")),
     path("subscribers/", include("subscriptions.urls")),

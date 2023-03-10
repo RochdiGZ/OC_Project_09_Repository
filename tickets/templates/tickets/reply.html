@@ -1,18 +1,18 @@
 {% extends "base.html" %}
 
-{% block title %}Réponse au ticket{% endblock %}
+{% block title %}Publier une critique{% endblock %}
 
 {% block content %}
     {% include "nav_bar.html" %}
     {% block nav_bar %}
     {% endblock %}
     {% if actual_review %}
-        <h2 class="text-center mt-3">Modifier votre critique</h2>
+        <h2 class="text-center mt-3">Modifier une critique</h2>
     {% else %}
         <h2 class="text-center mt-3">Créer une critique</h2>
     {% endif %}
     <div class="container">
-        <p>Vous êtes en train de poster en réponse à :</p>
+        <p class="text-warning bg-secondary">Vous êtes en train de poster en réponse à :</p>
         {% include 'tickets/display_ticket.html' with stop_btn=1 ticket=ticket %}
         <hr>
         <form class="form-inline" method="post" action="{% url 'reply-ticket' ticket.id %}">

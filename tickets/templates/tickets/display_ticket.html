@@ -1,11 +1,11 @@
 {% load static %}
 <div class="container mb-3">
     <div class="row justify-content-between">
-        <p class="h4 col-auto">{{ ticket.user.username }} a publié un ticket</p>
-        <p class="h4 col-auto">{{ ticket.time_created }}</p>
+        <p class="h4 text-light bg-dark col-auto">{{ ticket.user.username|lower|capfirst }} a publié un ticket</p>
+        <p class="h4 text-light bg-dark col-auto">{{ ticket.time_created }}</p>
     </div>
-    <p class="h3">{{ ticket.title }}</p>
-    <p class="h3">{{ ticket.description }}</p>
+    <p class="h3 text-primary">{{ ticket.title|capfirst }}</p>
+    <p class="h3 description">{{ ticket.description|capfirst }}</p>
     {% if ticket.image %}
         <div class="container">
             <div class="row justify-content-center">

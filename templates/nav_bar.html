@@ -1,7 +1,8 @@
+{% load static %}
 {% block content %}
       {% block comment %}
           <div class="alert alert-success mt-1 mb-1">
-              Vous êtes connecté {{ request.user|capfirst }} ! Bienvenue à notre site !
+              <span>Vous êtes connecté ! Bienvenue {{ request.user|lower|capfirst }} !</span>
           </div>
       {% endblock %}
       <nav class="navbar navbar-expand-sm navbar-info bg-info">

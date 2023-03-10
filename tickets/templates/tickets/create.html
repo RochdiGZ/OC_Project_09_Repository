@@ -1,32 +1,27 @@
-
-
 {% csrf_token %}
 {% if stop_btn %}
     <p>Livre/Article</p>
 {% endif %}
-<div class="form-group row-auto justify-content-center">
+<div class="mb-3 row-auto justify-content-center">
     <div class="col mt-3">
         <p>Titre</p>
-        <input class="form-control" type="text" name="title" maxlength="128" value="{{ticket.title}}" required>
+        <input class="form-control" type="text" name="title" maxlength="128"
+               value="{{ ticket.title|capfirst }}" required>
     </div>
 </div>
-<div class="form-group row-auto justify-content-center">
+<div class="mb-3 row-auto justify-content-center">
     <div class="col mt-3">
         <p>Description</p>
         <textarea class="form-control" id="description" name="description" maxlength="2048" rows="9"
-                    required>{{ticket.description}}</textarea>
+                    required>{{ ticket.description|capfirst }}</textarea>
     </div>
 </div>
 <div class="row-auto justify-content-center mb-3 mt-3">
     <p>Image</p>
     {% if ticket.image %}
-
-            <img src="{{ ticket.image.url }}" class="img-ticket img_post mt-0 mb-3">
-
+        <img src="{{ ticket.image.url }}" class="img-ticket img_post mt-0 mb-3">
     {% endif %}
-
-        <img src="#" class="img-preview img_post mt-0 mb-3">
-
+    <img src="#" class="img-preview img_post mt-0 mb-3">
     <div class="col">
         <input class="custom-file-input" type="file" name="image" accept="image/*">
     </div>

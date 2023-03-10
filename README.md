@@ -9,9 +9,6 @@ qui permet aux utilisateurs de :
 - Visualiser les utilisateurs à suivre et les abonnés
 - Consulter les publications des utilisateurs qu'ils suivent
 - Modifier ou supprimer ses propres publications
-
- 
-
 ### 💿 Installer Python
 ### 💿 Créer et activer un nouvel environnement virtuel `ENV` & Choisir l'interpréteur Python
 ```bash
@@ -19,7 +16,7 @@ python -m venv ENV
 ```
 ```bash
 ENV/Scripts/activate
-``` 
+```
 ### ⚙️ Cloner depuis GitHub le projet Django
 ```bash
 git clone https://github.com/RochdiGZ/OC_Project_09_Repository.git
@@ -32,7 +29,7 @@ git clone https://github.com/RochdiGZ/OC_Project_09_Repository.git
 cd OC_Project_09_Repository
 ```
 ```bash
-python -m pip install --upgrade pip
+python.exe -m pip install --upgrade pip
 ``` 
 ```bash
 pip install -r requirements.txt
@@ -57,26 +54,30 @@ Une fois le serveur de développement lancé, vous pouvez voir, dans un navigate
 l'application `LiTReview` via l'adresse `http://127.0.0.1:8000` .
 ### ⚙️ Se connecter avec l'interface de l'administration Django via `http://127.0.0.1:8000/admin`
 - Une fois le serveur de développement lancé, vous pouvez voir, dans un navigateur web, la page de l'administration 
-Django via `http://127.0.0.1:8000/admin`. Pour se connecter, il suffit de taper le nom d'utilisateur et 
-le mot de passe du super utilisateur ayant été créé précédemment et de cliquer sur le bouton `Connexion`.
-- `Une fois connecté, vous pouvez accéder à notre base de données.`
+Django via `http://127.0.0.1:8000/admin`. Pour se connecter, il suffit de taper le nom d'utilisateur `Rochdi` et 
+le mot de passe `secret@django` du super utilisateur ayant été créé précédemment, et de cliquer sur le bouton 
+`Connexion`.
+- `Une fois connecté, vous pouvez accéder à notre base de données et savoir les noms de tous les utilisateurs inscrits`
+- Vous pouvez utiliser un nom d'utilisateur inscrit et le mot de passe `secret@django` 
+pour se connecter à notre application.
 ### ⚙️ Se connecter avec l'interface de l'application LITReview via `http://127.0.0.1:8000`
 - Dans le cas où vous ne disposez pas d'un compte, il suffit de cliquer sur le bouton `S'inscrire` 
-puis taper un nom d'utilisateur et un mot de passe avec confirmation du mot de passe.
+et de taper un nom d'utilisateur et un mot de passe avec confirmation du mot de passe.
 - Dans le cas où vous disposez d'un compte, il suffit de taper le nom d'utilisateur et le mot de passe de votre compte 
-ayant été créé précédemment et de cliquer sur le bouton `Se Connecter`.
-- Une fois connecté, vous accédez directement à la page d'accueil de notre application via
+ayant été créé précédemment, et de cliquer sur le bouton `Se Connecter`.
 `http://127.0.0.1:8000/home` où vous pouvez utiliser les services de notre application.
-### ⚙️ Accéder à la page d'accueil de l'application LITReview via `http://127.0.0.1:8000/home`
+- vous pouvez accéder à notre base de données et savoir les noms de tous les utilisateurs inscrits`
+### ⚙️ Accéder à la page de flux de l'application LITReview via `http://127.0.0.1:8000/feed`
 - Visualiser le flux de tickets et critiques publiés, par ordre chronologique, les plus récents en premier 
 - Créer un propre ticket en demandant une critique et l'afficher dans le flux via le bouton 
-`Demander une critique` affiché en haut du flux (page d'accueil)
+`Demander une critique` affiché en haut de la page de flux
 - Créer une critique `à partir de zéro`, c'est-à-dire `pas en réponse à un ticket d'un autre utilisateur` : 
 Créer un ticket et une critique pour les afficher dans le flux via le bouton `Créer une critique`,
-affiché en haut du flux (page d'accueil)
+affiché en haut de la page de flux
 - Créer une critique en réponse à un ticket et l'afficher dans le flux via le bouton `Créer une critique` 
 affiché dans une publication du ticket
 - Accéder à la page d'abonnements via le lien `Abonnments` pour 
 ajouter ou désabonner des utilisateurs à suivre et visualiser les abonnés
 - Visualiser mes posts via le lien `Posts` et pouvoir modifier ou supprimer un ticket ou une critique
 - Se déconnecter via le lien `Se déconnecter`
+### 📖 Visiter les pages d'un utilisateur connecté
