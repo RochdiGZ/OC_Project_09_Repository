@@ -10,13 +10,6 @@ qui permet aux utilisateurs de :
 - Consulter les publications des utilisateurs qu'ils suivent
 - Modifier ou supprimer ses propres publications
 ### 💿 Installer Python
-### 💿 Créer et activer un nouvel environnement virtuel `ENV` & Choisir l'interpréteur Python
-```bash
-python -m venv ENV
-```
-```bash
-ENV/Scripts/activate
-```
 ### ⚙️ Cloner depuis GitHub le projet Django
 ```bash
 git clone https://github.com/RochdiGZ/OC_Project_09_Repository.git
@@ -24,10 +17,17 @@ git clone https://github.com/RochdiGZ/OC_Project_09_Repository.git
 ### ⚙️ Modifier les propriétés du dossier OC_Project_09_Repository comme source de données
 -  A l'aide de PyCharm, il suffit de sélectionner le dossier et d'utiliser le bouton droit de la souris pour choisir 
 `Mark Directory as > Sources Root`
-### 💿 Installer tous les modules du projet Django
+### 💿 Créer et activer un nouvel environnement virtuel `ENV` & Choisir l'interpréteur Python
 ```bash
 cd OC_Project_09_Repository
 ```
+```bash
+python -m venv ENV
+```
+```bash
+ENV/Scripts/activate
+```
+### 💿 Installer tous les modules du projet Django
 ```bash
 python.exe -m pip install --upgrade pip
 ``` 
@@ -38,25 +38,23 @@ pip install -r requirements.txt
 ```bash
 flake8 --format=html --htmldir=flake8_report --max-line-length=119
 ```
-### ⚙️ Créer un super utilisateur
-```bash
-python manage.py createsuperuser
-``` 
-Dans l'étape suivante, il suffit de rester dans le terminal pour taper un nom d'utilisateur et un mot de passe 
-avec confirmation du mot de passe. Par exemple,
-- nom d'utilisateur : `Rochdi`
-- Mot de passe : `secret@django`
 ### ⚙️ Lancer le serveur de développement
 ```bash
 python manage.py runserver
 ``` 
 Une fois le serveur de développement lancé, vous pouvez voir, dans un navigateur web, la page de connexion à 
-l'application `LiTReview` via l'adresse `http://127.0.0.1:8000` .
+l'application `LiTReview` via l'adresse `http://127.0.0.1:8000`.
+- `Vous pouvez utiliser le nom du super utilisateur Rochdi et le mot de pase secret@django`
+### ⚙️ Créer un autre super utilisateur pour se connecter à partir de l'interface de l'administartion Django
+```bash
+python manage.py createsuperuser
+``` 
+Dans l'étape suivante, il suffit de rester dans le terminal pour taper un nom d'utilisateur et un mot de passe 
+avec confirmation du mot de passe.
 ### ⚙️ Se connecter avec l'interface de l'administration Django via `http://127.0.0.1:8000/admin`
 - Une fois le serveur de développement lancé, vous pouvez voir, dans un navigateur web, la page de l'administration 
 Django via `http://127.0.0.1:8000/admin`. Pour se connecter, il suffit de taper le nom d'utilisateur `Rochdi` et 
-le mot de passe `secret@django` du super utilisateur ayant été créé précédemment, et de cliquer sur le bouton 
-`Connexion`.
+le mot de passe `secret@django`, et de cliquer sur le bouton `Connexion`.
 - `Une fois connecté, vous pouvez accéder à notre base de données et savoir les noms de tous les utilisateurs inscrits`
 - Vous pouvez utiliser un nom d'utilisateur inscrit et le mot de passe `secret@django` 
 pour se connecter à notre application.
