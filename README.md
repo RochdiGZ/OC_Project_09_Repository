@@ -65,8 +65,6 @@ pour se connecter à notre application.
 et de taper un nom d'utilisateur et un mot de passe avec confirmation du mot de passe.
 - Dans le cas où vous disposez d'un compte, il suffit de taper le nom d'utilisateur et le mot de passe de votre compte 
 ayant été créé précédemment, et de cliquer sur le bouton `Se Connecter`.
-`http://127.0.0.1:8000/home` où vous pouvez utiliser les services de notre application.
-- vous pouvez accéder à notre base de données et savoir les noms de tous les utilisateurs inscrits`
 ### ⚙️ Accéder à la page de flux de l'application LITReview via `http://127.0.0.1:8000/feed`
 - Visualiser le flux de tickets et critiques publiés, par ordre chronologique, les plus récents en premier 
 - Créer un propre ticket en demandant une critique et l'afficher dans le flux via le bouton 
@@ -80,4 +78,6 @@ affiché dans une publication du ticket
 ajouter ou désabonner des utilisateurs à suivre et visualiser les abonnés
 - Visualiser mes posts via le lien `Posts` et pouvoir modifier ou supprimer un ticket ou une critique
 - Se déconnecter via le lien `Se déconnecter`
-### 📖 Visiter les pages d'un utilisateur connecté
+### 📖 Information utile
+Pour toute information sur les besoins d'exécution de l'application LITReview, veuillez me contacter par email :
+Rochdi.GUEZGUEZ@Gmail.Com
